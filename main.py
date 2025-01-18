@@ -52,20 +52,7 @@ with col[1]:
     top_n = st.selectbox("Select Top N", [5, 10, 15, 20])
     results = top_n_tourism(tourism_rating, tourism_with_id, n=int(top_n))
     total_destinations_visited, average_rating, top_10_destinations = results
-    st.dataframe(top_10_destinations,
-                 column_order=['Place_Name', 'Visit_Count'],
-                 hide_index=True,
-                 column_config={
-                        'Place_Name': st.column_config.TextColumn(
-                            "Places"
-                        ),
-                        'Visit_Count': st.column_config.ProgressColumn(
-                            "Visit Count",
-                            format="%f",
-                            min_value=0,
-                            max_value=top_10_destinations['Visit_Count'].max()
-                        )
-                 })
+    st.dataframe(top_10_destinations, column_order=['Place_Name', 'Visit_Count'], hide_index=True)
     
 col = st.columns((3.5, 1.5, 1.5), gap='medium')
 
